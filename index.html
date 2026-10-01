@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width" = device-width, initial-scale="1.0">
+        <title style="font-family: Verdana, Geneva, Tahoma, sans-serif;">FOR YOU</title>
+        <link rel="stylesheet" href="style.css"></link>
+        
+    </head>
+
+    <body>
+        <audio id="bgMusic" autoplay loop volume="0.5" >
+            <source src="birthday-music.mp3" type="audio/mpeg">
+        </audio>
+        <main class="birthday page">
+            <section class="hero">
+                <div class="card">
+                  <div class="decorative heart-1">❤️</div>
+                  <div class="decorative butterfly">🦋</div>
+                  <div class="decorative star">⭐</div>
+                  <div class="decorative heart-2">💕</div>
+                  <div class="decorative heart -3">💘</div>
+             <h1><strong><b>happy birthday gorgeous!💕</b></strong></span></h1><hr>
+               <p class="intro"><b><i>
+                 hey girl,ik i cant be there with you today,so i made you a lil something instead.❤️</i></b>
+               </p>
+               <div class="hearts-row">
+                 <span class="heart">💖</span>
+                 <span class="heart">😍</span>
+                 <span class="heart">😘</span>
+                 <span class="heart">🎀</span>
+                 <span class="heart">🥰</span>
+                 <span class="heart">🩷</span>
+                 <span class="heart">🥵</span>
+                 <span class="heart">💘</span>    
+               </div>
+               <button class="sparkle-btn"">open your gift🙂‍↔️</button>
+               <script src="script.js"></script>
+               <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Find the button
+        const giftButton = document.querySelector('button');
+        
+        if (giftButton) {
+            giftButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Fade out the page
+                document.body.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.5s ease-out';
+                
+                // Navigate to gift.html after fade
+                setTimeout(() => {
+                    window.location.href = 'gift.html';
+                }, 500);
+            });
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('bgMusic');
+        
+        // Get saved time from localStorage
+        const savedTime = localStorage.getItem('musicTime');
+        const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
+        
+        if (savedTime) {
+            audio.currentTime = parseFloat(savedTime);
+        } else {
+            // First time - start at 140 seconds
+            audio.currentTime = 140;
+        }
+        
+        if (wasPlaying) {
+            audio.play();
+        }
+        
+        // Save current time before leaving page
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('musicTime', audio.currentTime);
+            localStorage.setItem('musicPlaying', !audio.paused);
+        });
+    });
+</script>
+<script src="script.js"></script>
+</body>
+</html>
